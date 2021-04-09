@@ -15,7 +15,6 @@ namespace Farmaceutica.Clases
         Validaciones V = new Validaciones();
         List<Producto> ListaProductos = new List<Producto>();
 
-
         public Producto() { }
 
         public Producto(string nombre, int id_producto, int stock_inicial)
@@ -33,7 +32,6 @@ namespace Farmaceutica.Clases
             int Salida_Stock_Inicial = 0;
             string Stock_Inicial;
             bool Flag = true;
-
 
             do
             {
@@ -73,7 +71,7 @@ namespace Farmaceutica.Clases
                 $"Nombre: {Nombre} " + System.Environment.NewLine +
                 $"Número de Producto: {Id_Producto}" + System.Environment.NewLine +
                 $"Stock inicial: {Stock_Inicial}"
-               );
+                );
         }
 
         public void CrearCatalogo()
@@ -91,7 +89,6 @@ namespace Farmaceutica.Clases
 
             foreach (Producto P in ListaProductos)
             {
-
                 Console.WriteLine($"Producto {ListaProductos.IndexOf(P) + 1}: " + System.Environment.NewLine + P.ToString());
             }
         }
@@ -117,7 +114,7 @@ namespace Farmaceutica.Clases
                 {
                     Pedido_Prod.Stock_Inicial--;
                     Console.WriteLine($"El pedido se ha realizado exitosamente! El producto pedido es: {Pedido_Prod.Nombre}");
-                    
+
                     if (Pedido_Prod.Stock_Inicial <= 0)
                     {
                         Console.WriteLine("Advertencia! El producto se ha quedado sin stock");
@@ -125,9 +122,7 @@ namespace Farmaceutica.Clases
                     Flag = true;
                 }
             } while (!Flag);
-
         }
-
 
         public void CrearEntrega()
         {
