@@ -70,7 +70,7 @@ namespace Farmaceutica.Clases
             return string.Format(
                 $"Nombre: {Nombre} " + System.Environment.NewLine +
                 $"Número de Producto: {Id_Producto}" + System.Environment.NewLine +
-                $"Stock inicial: {Stock}"
+                $"Stock: {Stock}"
                 );
         }
 
@@ -82,7 +82,7 @@ namespace Farmaceutica.Clases
             {
                 Producto P = CrearProducto();
                 ListaProductos.Add(P);
-                Console.Write("Presione 1 para finalizar o una tecla para continuar");
+                Console.WriteLine("Presione 1 para finalizar o una tecla para continuar");
                 Salida = Console.ReadLine();
 
             } while (Salida != "1");
@@ -135,7 +135,7 @@ namespace Farmaceutica.Clases
                 Producto Entrega_Prod = ListaProductos.Find(P => P.Id_Producto == Prod);
                 if (Entrega_Prod == null)
                 {
-                    Console.WriteLine($"No se encontró el prodcto con id {Entrega_Prod.Id_Producto}");
+                    Console.WriteLine("No se encontró el producto con el número ingresado");
                 }
                 else
                 {
@@ -146,7 +146,7 @@ namespace Farmaceutica.Clases
             } while (!Flag);
         }
 
-        public void MostrarStockfinal()
+        public void MostrarStockFinal()
         {
             foreach (Producto P in ListaProductos)
             {

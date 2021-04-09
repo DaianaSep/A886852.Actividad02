@@ -20,7 +20,7 @@ namespace Farmaceutica
             //Crear Entrega
             P.CrearEntrega();
             //Mostrar stock final
-            P.MostrarStockfinal();
+            P.MostrarStockFinal();
 
             Console.ReadKey();
         }
