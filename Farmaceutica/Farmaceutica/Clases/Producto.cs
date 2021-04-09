@@ -11,17 +11,17 @@ namespace Farmaceutica.Clases
     {
         public string Nombre { get; set; }
         public int Id_Producto { get; set; }
-        public int Stock_Inicial { get; set; }
+        public int Stock { get; set; }
         Validaciones V = new Validaciones();
         List<Producto> ListaProductos = new List<Producto>();
 
         public Producto() { }
 
-        public Producto(string nombre, int id_producto, int stock_inicial)
+        public Producto(string nombre, int id_producto, int stock)
         {
             this.Nombre = nombre;
             this.Id_Producto = id_producto;
-            this.Stock_Inicial = stock_inicial;
+            this.Stock = stock;
         }
 
         public Producto CrearProducto()
@@ -30,7 +30,7 @@ namespace Farmaceutica.Clases
             string Id_Producto;
             int Salida_Id_Producto = 0;
             int Salida_Stock_Inicial = 0;
-            string Stock_Inicial;
+            string stock;
             bool Flag = true;
 
             do
@@ -52,15 +52,15 @@ namespace Farmaceutica.Clases
             do
             {
                 Console.Write("Ingrese el stock inicial del producto: ");
-                Stock_Inicial = Console.ReadLine();
-                Flag = V.ValidarEntero(Stock_Inicial, ref Salida_Stock_Inicial);
+                stock = Console.ReadLine();
+                Flag = V.ValidarEntero(stock, ref Salida_Stock_Inicial);
 
             } while (!Flag);
 
             Producto P = new Producto(
                 Nombre,
                 Convert.ToInt32(Id_Producto),
-                Convert.ToInt32(Stock_Inicial));
+                Convert.ToInt32(stock));
 
             return P;
         }
@@ -70,7 +70,7 @@ namespace Farmaceutica.Clases
             return string.Format(
                 $"Nombre: {Nombre} " + System.Environment.NewLine +
                 $"Número de Producto: {Id_Producto}" + System.Environment.NewLine +
-                $"Stock inicial: {Stock_Inicial}"
+                $"Stock inicial: {Stock}"
                 );
         }
 
@@ -106,16 +106,16 @@ namespace Farmaceutica.Clases
                 {
                     Console.WriteLine("No se encontró el producto con el número ingresado");
                 }
-                else if (Pedido_Prod.Stock_Inicial <= 0)
+                else if (Pedido_Prod.Stock <= 0)
                 {
                     Console.WriteLine("No hay más stock del producto seleccionado");
                 }
                 else
                 {
-                    Pedido_Prod.Stock_Inicial--;
+                    Pedido_Prod.Stock--;
                     Console.WriteLine($"El pedido se ha realizado exitosamente! El producto pedido es: {Pedido_Prod.Nombre}");
 
-                    if (Pedido_Prod.Stock_Inicial <= 0)
+                    if (Pedido_Prod.Stock <= 0)
                     {
                         Console.WriteLine("Advertencia! El producto se ha quedado sin stock");
                     }
@@ -139,7 +139,7 @@ namespace Farmaceutica.Clases
                 }
                 else
                 {
-                    Entrega_Prod.Stock_Inicial++;
+                    Entrega_Prod.Stock++;
                     Console.WriteLine($"La entrega se ha realizado exitosamente! El producto entregado es: {Entrega_Prod.Nombre}");
                     Flag = true;
                 }
@@ -150,7 +150,7 @@ namespace Farmaceutica.Clases
         {
             foreach (Producto P in ListaProductos)
             {
-                Console.WriteLine("Listado final de prductos:" + System.Environment.NewLine + $"Número de producto: {P.Id_Producto} - Nombre: {P.Nombre} - El stock final es: {P.Stock_Inicial}");
+                Console.WriteLine("Listado final de prductos:" + System.Environment.NewLine + $"Número de producto: {P.Id_Producto} - Nombre: {P.Nombre} - El stock final es: {P.Stock}");
             }
         }
     }
