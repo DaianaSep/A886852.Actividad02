@@ -82,7 +82,7 @@ namespace Farmaceutica.Clases
             {
                 Producto P = CrearProducto();
                 ListaProductos.Add(P);
-                Console.WriteLine("Presione 1 para finalizar o una tecla para continuar");
+                Console.WriteLine("Presione 1 para finalizar o Enter para continuar");
                 Salida = Console.ReadLine();
 
             } while (Salida != "1");
@@ -96,19 +96,28 @@ namespace Farmaceutica.Clases
         public void CrearPedido()
         {
             bool Flag = false;
+            int Salida_Num_Prod = 0;
+
             do
             {
-                Console.Write("Ingrese el número del producto a pedir: ");
-                int Prod = int.Parse(Console.ReadLine());
+                do
+                {
+                    Console.Write("Ingrese el número del producto a pedir: ");
+                    string Num_Prod = Console.ReadLine();
+                    Flag = V.ValidarEntero(Num_Prod, ref Salida_Num_Prod);
+                } while (!Flag);
 
-                Producto Pedido_Prod = ListaProductos.Find(P => P.Id_Producto == Prod);
+                Producto Pedido_Prod = ListaProductos.Find(P => P.Id_Producto == Salida_Num_Prod);
+
                 if (Pedido_Prod == null)
                 {
                     Console.WriteLine("No se encontró el producto con el número ingresado");
+                    Flag = false;
                 }
                 else if (Pedido_Prod.Stock <= 0)
                 {
                     Console.WriteLine("No hay más stock del producto seleccionado");
+                    Flag = false;
                 }
                 else
                 {
@@ -127,15 +136,22 @@ namespace Farmaceutica.Clases
         public void CrearEntrega()
         {
             bool Flag = false;
+            int Salida_Num_Prod = 0;
+
             do
             {
-                Console.Write("Ingrese el número del producto a entregar: ");
-                int Prod = int.Parse(Console.ReadLine());
+                do
+                {
+                    Console.Write("Ingrese el número del producto a entregar: ");
+                    string Num_Prod = Console.ReadLine();
+                    Flag = V.ValidarEntero(Num_Prod, ref Salida_Num_Prod);
+                } while (!Flag);
 
-                Producto Entrega_Prod = ListaProductos.Find(P => P.Id_Producto == Prod);
+                Producto Entrega_Prod = ListaProductos.Find(P => P.Id_Producto == Salida_Num_Prod);
                 if (Entrega_Prod == null)
                 {
                     Console.WriteLine("No se encontró el producto con el número ingresado");
+                    Flag = false;
                 }
                 else
                 {
