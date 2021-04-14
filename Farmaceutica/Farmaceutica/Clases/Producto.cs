@@ -35,6 +35,7 @@ namespace Farmaceutica.Clases
 
             do
             {
+                Console.WriteLine();
                 Console.Write("Ingrese el nombre del producto: ");
                 Nombre = Console.ReadLine();
                 Flag = V.ValidarTexto(Nombre, "Nombre");
@@ -94,9 +95,11 @@ namespace Farmaceutica.Clases
 
             } while (Salida != "1");
 
+            Console.WriteLine();
             Console.WriteLine("Catálogo de productos: ");
             foreach (Producto P in ListaProductos)
             {
+                Console.WriteLine();
                 Console.WriteLine($"Producto {ListaProductos.IndexOf(P) + 1}: " + System.Environment.NewLine + P.ToString());
             }
         }
@@ -115,6 +118,7 @@ namespace Farmaceutica.Clases
                 }
                 do
                 {
+                    Console.WriteLine();
                     Console.Write("Ingrese el número del producto a pedir: ");
                     string Num_Prod = Console.ReadLine();
                     Flag = V.ValidarEntero(Num_Prod, ref Salida_Num_Prod);
@@ -135,10 +139,12 @@ namespace Farmaceutica.Clases
                 else
                 {
                     Pedido_Prod.Stock--;
+                    Console.WriteLine();
                     Console.WriteLine($"El pedido se ha realizado exitosamente! El producto pedido es: {Pedido_Prod.Nombre}");
 
                     if (Pedido_Prod.Stock <= 0)
                     {
+                        Console.WriteLine();
                         Console.WriteLine("Advertencia! El producto se ha quedado sin stock");
                     }
                     Flag = true;
@@ -160,6 +166,7 @@ namespace Farmaceutica.Clases
                 }
                 do
                 {
+                    Console.WriteLine();
                     Console.Write("Ingrese el número del producto a entregar: ");
                     string Num_Prod = Console.ReadLine();
                     Flag = V.ValidarEntero(Num_Prod, ref Salida_Num_Prod);
@@ -174,6 +181,7 @@ namespace Farmaceutica.Clases
                 else
                 {
                     Entrega_Prod.Stock++;
+                    Console.WriteLine();
                     Console.WriteLine($"La entrega se ha realizado exitosamente! El producto entregado es: {Entrega_Prod.Nombre}");
                     Flag = true;
                 }
@@ -188,6 +196,7 @@ namespace Farmaceutica.Clases
             }
             else
             {
+                Console.WriteLine();
                 Console.WriteLine("Stock final: ");
                 foreach (Producto P in ListaProductos)
                 {

@@ -30,7 +30,7 @@ namespace Farmaceutica.Clases
 
             if (string.IsNullOrEmpty(valor))
             {
-                Console.WriteLine("El campo {0} no debe ser vacio.", campo);
+                Console.WriteLine("El campo {0} no debe estar vacío.", campo);
             }
             else
             {

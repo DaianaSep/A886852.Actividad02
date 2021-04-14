@@ -20,6 +20,7 @@ namespace Farmaceutica
             {
                 do
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Seleccione una de las siguientes opciones del menú: " + System.Environment.NewLine +
                         "1 - Crear catálogo" + System.Environment.NewLine +
                         "2 - Crear pedido" + System.Environment.NewLine +
