@@ -129,7 +129,7 @@ namespace Farmaceutica.Clases
                 }
                 else if (Pedido_Prod.Stock <= 0)
                 {
-                    Console.WriteLine("No hay más stock del producto seleccionado");
+                    Console.WriteLine("No hay stock del producto seleccionado");
                     Flag = false;
                 }
                 else
@@ -186,11 +186,15 @@ namespace Farmaceutica.Clases
             {
                 Console.WriteLine("No hay productos cargados");
             }
-            Console.WriteLine("Stock final: ");
-            foreach (Producto P in ListaProductos)
+            else
             {
-                Console.WriteLine($"    Número de producto: {P.Id_Producto} - Nombre: {P.Nombre} - El stock final es: {P.Stock}");
+                Console.WriteLine("Stock final: ");
+                foreach (Producto P in ListaProductos)
+                {
+                    Console.WriteLine($"    Número de producto: {P.Id_Producto} - Nombre: {P.Nombre} - El stock final es: {P.Stock}");
+                }
             }
+            
         }
     }
 }
