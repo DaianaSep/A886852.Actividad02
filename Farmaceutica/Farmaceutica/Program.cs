@@ -12,15 +12,46 @@ namespace Farmaceutica
         static void Main(string[] args)
         {
             Producto P = new Producto();
+            Validaciones V = new Validaciones();
+            bool Flag = false;
+            int SalidaMenu = 0;
 
-            //Crear catálogo de productos
-            P.CrearCatalogo();
-            //Crear Pedido
-            P.CrearPedido();
-            //Crear Entrega
-            P.CrearEntrega();
-            //Mostrar stock final
-            P.MostrarStockFinal();
+            do
+            {
+                do
+                {
+                    Console.WriteLine("Seleccione una de las siguientes opciones del menú: " + System.Environment.NewLine +
+                        "1 - Crear catálogo" + System.Environment.NewLine +
+                        "2 - Crear pedido" + System.Environment.NewLine +
+                        "3 - Crear entrega" + System.Environment.NewLine +
+                        "4 - Mostrar stock final" + System.Environment.NewLine +
+                        "0 - Salir");
+
+                    string IngresoMenu = Console.ReadLine();
+                    Flag = V.ValidarEntero(IngresoMenu, ref SalidaMenu);
+                } while (!Flag);
+
+                switch (SalidaMenu)
+                {
+                    case 1:
+                        P.CrearCatalogo();
+                        break;
+                    case 2:
+                        P.CrearPedido();
+                        break;
+                    case 3:
+                        P.CrearEntrega();
+                        break;
+                    case 4:
+                        P.MostrarStockFinal();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        Console.WriteLine("No ingresó una opción válida");
+                        break;
+                }
+            } while (SalidaMenu != 0);
 
             Console.ReadKey();
         }

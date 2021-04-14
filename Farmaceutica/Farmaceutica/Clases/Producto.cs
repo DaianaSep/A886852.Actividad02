@@ -46,7 +46,14 @@ namespace Farmaceutica.Clases
                 Console.Write("Ingrese el número del producto: ");
                 Id_Producto = Console.ReadLine();
                 Flag = V.ValidarEntero(Id_Producto, ref Salida_Id_Producto);
+                Producto Num_Producto;
 
+                Num_Producto = ListaProductos.Find(Prod => Prod.Id_Producto == Salida_Id_Producto);
+                if (Num_Producto != null)
+                {
+                    Console.WriteLine("Ya hay un producto en el catálogo con ese número");
+                    Flag = false;
+                }
             } while (!Flag);
 
             do
@@ -68,9 +75,9 @@ namespace Farmaceutica.Clases
         public override string ToString()
         {
             return string.Format(
-                $"Nombre: {Nombre} " + System.Environment.NewLine +
-                $"Número de Producto: {Id_Producto}" + System.Environment.NewLine +
-                $"Stock: {Stock}"
+                $"  Nombre: {Nombre} " + System.Environment.NewLine +
+                $"  Número de Producto: {Id_Producto}" + System.Environment.NewLine +
+                $"  Stock: {Stock}"
                 );
         }
 
@@ -87,6 +94,7 @@ namespace Farmaceutica.Clases
 
             } while (Salida != "1");
 
+            Console.WriteLine("Catálogo de productos: ");
             foreach (Producto P in ListaProductos)
             {
                 Console.WriteLine($"Producto {ListaProductos.IndexOf(P) + 1}: " + System.Environment.NewLine + P.ToString());
@@ -100,6 +108,11 @@ namespace Farmaceutica.Clases
 
             do
             {
+                if (ListaProductos.Count == 0)
+                {
+                    Console.WriteLine("No hay productos cargados");
+                    break;
+                }
                 do
                 {
                     Console.Write("Ingrese el número del producto a pedir: ");
@@ -140,6 +153,11 @@ namespace Farmaceutica.Clases
 
             do
             {
+                if (ListaProductos.Count == 0)
+                {
+                    Console.WriteLine("No hay productos cargados");
+                    break;
+                }
                 do
                 {
                     Console.Write("Ingrese el número del producto a entregar: ");
@@ -164,9 +182,14 @@ namespace Farmaceutica.Clases
 
         public void MostrarStockFinal()
         {
+            if (ListaProductos.Count == 0)
+            {
+                Console.WriteLine("No hay productos cargados");
+            }
+            Console.WriteLine("Stock final: ");
             foreach (Producto P in ListaProductos)
             {
-                Console.WriteLine("Listado final de prductos:" + System.Environment.NewLine + $"Número de producto: {P.Id_Producto} - Nombre: {P.Nombre} - El stock final es: {P.Stock}");
+                Console.WriteLine($"    Número de producto: {P.Id_Producto} - Nombre: {P.Nombre} - El stock final es: {P.Stock}");
             }
         }
     }
