@@ -90,7 +90,9 @@ namespace Farmaceutica.Clases
             {
                 Producto P = CrearProducto();
                 ListaProductos.Add(P);
-                Console.WriteLine("Presione 1 para finalizar o Enter para continuar");
+                Console.WriteLine("El producto se agregó correctamente al catálogo");
+                Console.WriteLine();
+                Console.WriteLine("Presione 1 para finalizar o cualquier tecla para continuar");
                 Salida = Console.ReadLine();
 
             } while (Salida != "1");
